@@ -11,9 +11,9 @@ Both manually added hotels and API-fetched hotels are combined into a single lis
 
 The application consists of:
 
-A React frontend for displaying and managing hotel data
-A Node.js and Express backend providing REST APIs
-Backend API testing using Jest
+- A React frontend for displaying and managing hotel data
+- A Node.js and Express backend providing REST APIs
+- Backend API testing using Jest
 
 ## Functionalities
 
@@ -43,23 +43,24 @@ Backend API testing using Jest
 
 *Frontend*
 
-ReactJS
-JavaScript
-HTML, CSS
+- ReactJS
+- JavaScript
+- HTML, CSS
 
 *Backend*
 
-Node.js
-Express.js
-node-fetch
+- Node.js
+- Express.js
+- node-fetch
 
 *Testing*
 
-Jest
-Supertest
+- Jest
+- Supertest
 
 ## Project Structure
 
+```text
 hotel-rating-app/
 │
 ├── backend/
@@ -73,22 +74,22 @@ hotel-rating-app/
 │   ├── package.json
 │
 ├── README.md
-
+```
 
 ## How to Run the Application
 
 *Backend*
-cd backend
-npm install
-node server.js
+- cd backend
+- npm install
+- node server.js
 
 Backend will run on:
 http://localhost:5000
 
 *Frontend*
-cd frontend
-npm install
-npm start
+- cd frontend
+- npm install
+- npm start
 
 Frontend will run on:
 http://localhost:3000
@@ -109,8 +110,8 @@ http://localhost:3000
 
 Backend tests are written using Jest.
 
-cd backend
-npm test
+- cd backend
+- npm test
 
 The tests cover:
 
@@ -122,26 +123,28 @@ The tests cover:
 
 ## Error Handling
 
-*Missing fields (POST /hotels):*
-Returns 400 with
-{ "message": "Required fields are missing" }
+- **POST /hotels**  
+  Returns **400 Bad Request** when required fields are missing.  
+  Response: `{ "message": "Required fields are missing" }`
 
-*Hotel ID not found (PUT/DELETE):*
-Returns 404 with
-{ "message": "Not found" }
+- **PUT /hotels/:id** and **DELETE /hotels/:id**  
+  Returns **404 Not Found** when the hotel ID does not exist.  
+  Response: `{ "message": "Not found" }`
 
-*External API failure (GET /hotels/from-api):*
-Returns 500 with
-{ "message": "Failed to fetch data from external API" }
+- **GET /hotels/from-api**  
+  Returns **500 Internal Server Error** when the external API fails.  
+  Response: `{ "message": "Failed to fetch data from external API" }`
 
-*Internal server error:*
-Returns 500 with
-{ "message": "Internal server error" }
+- **Any API request**  
+  Returns **500 Internal Server Error** for unexpected server issues.  
+  Response: `{ "message": "Internal server error" }`
 
 ## Notes
 
-- Hotel data fetched from the external API is mapped to match application fields.
-- Ratings for API-fetched hotels are generated programmatically for consistency.
-- Manual and API-fetched hotels are merged, avoiding duplicate names.
-- No database is used; data is stored in memory.
-- Frontend should handle errors gracefully and display messages to users.
+- Hotel data from the external API is mapped to match application fields.
+- Manual and API-fetched hotels are merged without duplicates.
+- Data is stored in memory (no database used).
+- External API uses a fixed location with a maximum of 50 results.
+
+
+
