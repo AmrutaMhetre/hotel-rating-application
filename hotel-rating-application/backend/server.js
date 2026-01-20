@@ -1,8 +1,10 @@
 const express = require("express");
 // const fetch = require("node-fetch");
+require('dotenv').config(); // Load environment variables
 const app = express();
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; 
+const apiKey = process.env.GEOAPIFY_API_KEY;
 
 app.use(express.json());
 
@@ -71,7 +73,6 @@ app.get("/hotels/highest-rating", (req, res) => {
 
 app.get("/hotels/from-api", async (req, res) => {
   try {
-    const apiKey = "8b4fff602db5409b886d54a13aba7151";
 
 if (!apiKey) {
   return res.status(500).json({ message: "API key missing" });
