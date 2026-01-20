@@ -81,16 +81,18 @@ hotel-rating-app/
 *Backend*
 - cd backend
 - npm install
-- Create a .env file with PORT and GEOAPIFY_API_KEY
+- Copy `.env.example` to `.env`
+- Add values for `PORT` and `GEOAPIFY_API_KEY` in `.env`
 - node server.js
-- Backend runs on the port specified in .env (default 5000)
+- Backend runs on the port specified in `.env` (default 5000)
 
 *Frontend*
 - cd frontend
 - npm install
-- Create a .env file with REACT_APP_BACKEND_URL
+- Copy `.env.example` to `.env`
+- Add value for `REACT_APP_BACKEND_URL` in `.env`
 - npm start
-- Frontend connects to backend URL specified in .env
+- Frontend connects to backend URL specified in `.env`
 
 
 ## API Endpoints
@@ -144,6 +146,7 @@ The tests cover:
 - Manual and API-fetched hotels are merged without duplicates.
 - Data is stored in memory (no database used).
 - External API uses a fixed location with a maximum of 50 results.
+
 
 
 
